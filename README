@@ -1,0 +1,79 @@
+Timp de implementare:
+	9 zile-3/4 ore/zi
+
+Implementari:
+-toate cerintele
+-Bonusuri:
+	- undo (tasta u)
+	- cheat (d apasat in mod repetat)
+	- nivele functie de punctaj
+	- mesaje amuzante (la cheat si meniu)
+
+	De la inceput vreau sa mentionez ca tema
+nu are menirea sa jigneasca in niciun fel, prin
+mesajele sale. Sunt simple glume. Nu ader la
+cultul manelelor sau al "cocalarilor", am vrut
+sa fac doar un pamflet, iar colegilor le-a placut
+ideea asa ca am implementat-o. Am tratat tema cu
+seriozitate.
+	
+========
+
+	Pentru utilizator:
+La deschiderea jocului apare un meniu din care
+se pot selecta optiunile de baza: New Game, Continue,
+Quit. La apasarea lui New Game apare tabla de joc si
+2 valori generate aleator pe ea, precum si panoul
+de control, unde apare punctajul, nivelul de "valoare",
+si comenzile valide.
+	Prin meniu se navigheaza cu sagetile si cu 
+Enter. 
+	Jocul se joaca cu tastele w,a,s,d,u,q.
+	La apasarea lui q, folosind sagetile se poate
+naviga prin meniu (inclusiv la optiune continue), la
+fel si in cazul in care jocul este pierdut.
+	Cu tasta u se afiseaza tabla de dinainte
+ultimei apasari de taste: buton de undo.
+	Apasand in mod repetat tasta d (chiar daca
+miscarea nu este valida) se activeaza cheatul:
+in toate casutele din tabla apare valoarea 2048 si 
+un mesaj amuzant.
+	Langa punctaj apar diferite nivele, menite
+sa il faca pe jucator sa se amuze.
+=======
+	Pentru programator:
+	Structura de baza a programului e data de functia
+main, de unde porneste codul. Aici se poate modifica
+meniul.
+	Mai departe, la New Game se apeleaza functia
+deseneaza_tabla, ce afiseaza tabla pe ecran (goala).
+In start_the_game se prelucreaza tabla din memoria calcu-
+latorului si pozitioneaza doua numere aleator din {2,4}.
+	Functia gameaza contine practic tot jocul.
+Se ocupa de rotatii ale tablei, de undo, de scor, etc.
+Doar algoritmul de mutare este implementat separat.
+	Functia redeseneaza_tabla face exact ce spune
+numele, tinand cond te indici de pozitie predefiniti.
+(unde si ce din matrice trebuie afisat).
+	Plaseaza_random pune numar aleator pe tabla.
+	Difera copia verifica daca doua matrici sunt 
+diferite.
+	Copiaza matricea copiaza o matrice intr-o alta.
+	Transpune matricea si oglindirea de matrice 
+se folosesc in rotatia matricei (pentru ca ma folosesc
+doar de functia muta_dr ce face mutarea la dreapta).
+	Am_loc verifica daca mai este loc pe tabla.
+	Mai_sunt_mutari verifica daca mai sunt mutari
+valide.
+	Decide_directia se foloseste de casute_libere
+si best_choice pentru a implementa mutari automate,
+definite in gameaza la 20 de secunde fara apasarea
+unei taste.
+	Functia arata_punctaj contine partea amuzanta
+a jocului: nivelele bazate pe puncte si denumirile lor
+..iesite din comun (din nou mentionez ca au rolul doar
+de a amuza si a de a atrage jucatorul).
+	Mesajul in caz ca se pierde este implementat
+in functia gameaza, ce reprezeinta "creierul jocului".
+	Asteptarea unei mutari valide este implicita,
+prin felul in care a fost redactat codul.
